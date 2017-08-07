@@ -74,6 +74,12 @@
                 <?php echo $this->partial('files/cover-image.php', array('file' => $exhibit->getCoverImage())); ?>
             </div>
         </div>
+        <?php
+          // fcd1, 08/07/17: Add capability to view/change exhibit owner
+          fire_plugin_hook('edit_exhibit_metadata',array('user' => current_user(),
+							 'view' => $this,
+							 'exhibit' => $exhibit ) );
+        ?>
     </fieldset>
     <fieldset>
         <legend><?php echo __('Pages'); ?></legend>
